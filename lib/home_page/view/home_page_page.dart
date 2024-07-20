@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tecno_image_view/home_page/bloc/bloc.dart';
+import 'package:tecno_image_view/home_page/cubit/image_urls_cubit.dart';
 import 'package:tecno_image_view/home_page/widgets/home_page_body.dart';
 
 /// {@template home_page_page}
@@ -16,11 +17,19 @@ class HomePagePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => HomePageBloc(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => HomePageBloc(),
+        ),
+        BlocProvider(
+          create: (context) => ImageUrlsCubit(),
+        ),
+      ],
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Tecno Image Viewer'),
+          title: const Text('Easy Online Image-viewer'),
+          centerTitle: true,
         ),
         body: const HomePageView(),
       ),
@@ -37,6 +46,34 @@ class HomePageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const HomePageBody();
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        if (constraints.maxWidth < 850) {
+          return const HomePageBody();
+        } else if (constraints.maxWidth >= 850 && constraints.maxWidth < 1200) {
+          return const Row(
+            children: [
+              Spacer(flex: 2),
+              Expanded(
+                flex: 10,
+                child: HomePageBody(),
+              ),
+              Spacer(flex: 2),
+            ],
+          );
+        } else {
+          return const Row(
+            children: [
+              Spacer(flex: 3),
+              Expanded(
+                flex: 8,
+                child: HomePageBody(),
+              ),
+              Spacer(flex: 3),
+            ],
+          );
+        }
+      },
+    );
   }
 }

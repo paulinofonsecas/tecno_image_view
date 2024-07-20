@@ -19,7 +19,7 @@ class App extends StatelessWidget {
       ),
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color.fromARGB(255, 233, 128, 30),
+          seedColor: Colors.blue,
         ),
         useMaterial3: true,
       ),
