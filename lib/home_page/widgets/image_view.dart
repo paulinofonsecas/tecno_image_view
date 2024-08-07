@@ -1,12 +1,8 @@
-import 'dart:async';
-
-import 'package:download/download.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:insta_image_viewer/insta_image_viewer.dart';
 import 'package:tecno_image_view/global_widgets/global_image_network.dart';
-import 'package:tecno_image_view/home_page/widgets/images_preview_item.dart';
 
 class ImageView extends StatelessWidget {
   const ImageView({
@@ -42,17 +38,7 @@ class ImageView extends StatelessWidget {
             ),
             child: TextButton.icon(
               icon: const Icon(FontAwesomeIcons.download),
-              onPressed: () async {
-                late Uint8List? bytes;
-                if (memoryImage == null) {
-                  bytes = await generateImageBytes(image!);
-                } else {
-                  bytes = memoryImage;
-                }
-
-                final stream = Stream.fromIterable(bytes!);
-                unawaited(download(stream, 'Image 01.png'));
-              },
+              onPressed: () async {},
               label: const Text('Descarregar imagem'),
             ),
           ),

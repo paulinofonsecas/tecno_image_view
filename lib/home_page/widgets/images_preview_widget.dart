@@ -21,7 +21,6 @@ class _ImagesPreviewWidgetState extends State<ImagesPreviewWidget> {
     final url = params['url'];
 
     if (url != null) {
-      print(url);
       context.read<ImageUrlsCubit>().addImagesUrl(url);
     }
 
