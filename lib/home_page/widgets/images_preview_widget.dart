@@ -48,8 +48,10 @@ class _ImagesPreviewWidgetState extends State<ImagesPreviewWidget> {
         return LayoutBuilder(
           builder: (context, constraints) {
             return Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: constraints.maxWidth * .1,
+              padding: EdgeInsets.only(
+                left: constraints.maxWidth * .1,
+                right: constraints.maxWidth * .1,
+                bottom: constraints.maxWidth * .05,
               ),
               child: GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
